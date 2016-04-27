@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@inject WsFedAuth.Web.CustomClaimsPrincipal currentPrincipal
+
+<!-- Need to say if logged in or out -->
+@if (currentPrincipal.Identity.IsAuthenticated)
+{
+    <div id="main">
+        <div class="section">
+            You are logged in as: <b>@currentPrincipal.Identity.Name</b>
+            <h4>Your claims:</h4>
+            <ul>
+                @foreach(var claim in currentPrincipal.Claims)
+                {
+                    <li>@claim.Type: <b>@claim.Value</b></li>
+                }
+
+            </ul>
+            <ul>
+                <li><a href="@(Url.Action("Logout", "Home"))">Log out</a> <em>(Kill this sites cookie only)</em></li>
+                <li><a href="@(Url.Action("FederatedLogout", "Home"))">Federated Log out</a> <em>(Logout at the IdP as well)</em></li>
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+    <!-- If not logged in section -->
+    <div id="main">
+        <div class="section first">
+            <h3>You are not logged in</h3>
+            <ul>
+                <li><a href="@(Url.Action("Authenticated", "Home"))">Login</a> <em>(redirects to a controller action with an [Authorize()] attribute)</em></li>
+            </ul>
+        </div>
+    </div>
+}
+
+
