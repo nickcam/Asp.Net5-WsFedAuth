@@ -33,6 +33,6 @@ Federated Logout is a bit hacky. Wasn't able to redirect within the WsFedAuthent
 Also during the Federated Log out, IdentityServer will log you out after asking for your permission, but won't redirect back to the reply page. The custom STS I've tested this on does redirect after federated logout, so this is just WsFed endpoint dependant.
 
 ---------------------------------
-The process is working for my Custom STS (and the incldued example IdentityServer). Still not 100% sure if this the way to go or not, so if there's better options please let me (and anyone else who sees this) know.
+The process is working for my Custom STS (and the included example IdentityServer). Still not 100% sure if this the way to go or not, so if there's better options please let me (and anyone else who sees this) know.
 
 
